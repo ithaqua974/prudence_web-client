@@ -11,22 +11,61 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}">
+                            <label for="nom" class="col-md-4 control-label">Nom</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="nom" type="text" class="form-control" name="nom" value="{{ old('nom') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nom'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('nom') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}">
+                            <label for="prenom" class="col-md-4 control-label">Prenom</label>
+
+                            <div class="col-md-6">
+                                <input id="prenom" type="text" class="form-control" name="prenom" value="{{ old('prenom') }}" required autofocus>
+
+                                @if ($errors->has('prenom'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('prenom') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('adresse') ? ' has-error' : '' }}">
+                            <label for="adresse" class="col-md-4 control-label">Adresse</label>
+
+                            <div class="col-md-6">
+                                <input id="adresse" type="text" class="form-control" name="adresse" value="{{ old('adresse') }}" required autofocus>
+
+                                @if ($errors->has('adress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('adresse') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
+                            <label for="telephone" class="col-md-4 control-label">Téléphone</label>
+
+                            <div class="col-md-6">
+                                <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') }}" required autofocus>
+
+                                @if ($errors->has('telephone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('telephone') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">Adresse Mail </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -52,6 +91,8 @@
                                 @endif
                             </div>
                         </div>
+                       
+
 
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
