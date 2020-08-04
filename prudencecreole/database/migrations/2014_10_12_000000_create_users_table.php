@@ -20,15 +20,17 @@ class CreateUsersTable extends Migration
             $table->string('adresse');
             $table->integer('client_id');
             $table->string('email')->unique();
-            $table->integer('role');
+            $table->integer('role_id');
             $table->string('telephone');
             $table->string('password');
             $table->boolean('actif');
             $table->rememberToken();
             $table->timestamps();
         });
-    }
 
+       
+    }
+    
     /**
      * Reverse the migrations.
      *
