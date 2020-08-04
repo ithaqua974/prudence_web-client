@@ -11,4 +11,8 @@ class Contrat extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function montant()
+    {
+        return $this->belongsTo('App\Montant');
+    }
 }

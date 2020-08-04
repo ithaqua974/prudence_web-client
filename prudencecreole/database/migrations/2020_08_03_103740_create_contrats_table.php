@@ -18,7 +18,7 @@ class CreateContratsTable extends Migration
             $table->integer('numero')->nullable();
             $table->string('type');
             $table->string('option');
-            $table->string('montant');
+            $table->integer('montant_id');
             $table->integer('user_id');
             $table->boolean('actif')->nullable();
             $table->timestamps();
