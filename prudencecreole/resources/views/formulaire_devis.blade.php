@@ -8,25 +8,27 @@
                 <div class="panel-heading">Devis</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('devis') }}">
-                        {{ csrf_field() }}
+                        {{ csrf_field() }} 
                         <div class="form-group">
                         @if(@isset($devi))
                         <label for="type">Type de contrat</label>
                         <select class="form-control" name="type" id="type">
-                            <option value="1"{{ "1" == $devi->type ? 'selected' : '' }}>Assurance habitation</option>
-                            <option value="2"{{ "2" == $devi->type ? 'selected' : '' }}>Assurance responsabilité civile</option>
-                            <option value="3"{{ "3" == $devi->type ? 'selected' : '' }}>Assurance automobile</option>
-                            <option value="4"{{ "4" == $devi->type ? 'selected' : '' }}>Assurance moto</option>
-                            <option value="5"{{ "5" == $devi->type ? 'selected' : '' }}>Assurance vie</option>
-                        </select>
+     
+                            @foreach ($types as $type)
+                                <option value="{{$type->id}}" {{ $type->id == $devi->type_id ? 'selected' : '' }}>{{$type->type}}</option>
+                   
+                            @endforeach
+                           </select>
                         </div>
                         <div class="form-group" name="">
                             <label for="option">Option de contrat</label>
                             <select class="form-control" name="option" id="option">
-                            <option value="1"{{ "1" == $devi->option ? 'selected' : '' }}>Aucun</option>
-                            <option value="2"{{ "2" == $devi->option ? 'selected' : '' }}>1 option</option>
-                            <option value="3"{{ "3" == $devi->option ? 'selected' : '' }}>2 option </option>
-                            <option value="4"{{ "4" == $devi->option ? 'selected' : '' }}>Toute option</option>
+                      
+                                @foreach ($options as $option)
+                                    <option value="{{$option->id}}"{{ $option->id == $devi->option_id ? 'selected' : '' }}>{{$option->option}}</option>
+                          
+                                @endforeach
+                                
                             </select>
                         </div>
                         <div class="form-group" name="">
@@ -35,20 +37,17 @@
                         @else
                         <label for="type">Type de contrat</label>
                         <select class="form-control" name="type" id="type">
-                            <option value="1">Assurance habitation</option>
-                            <option value="2">Assurance responsabilité civile</option>
-                            <option value="3">Assurance automobile</option>
-                            <option value="4">Assurance moto</option>
-                            <option value="5">Assurance vie</option>
+                            @foreach ($types as $type)
+                            <option value="{{$type->id}}">{{$type->type}}</option>
+                       @endforeach
                         </select>
                         </div>
                         <div class="form-group" name="">
                             <label for="option">Option de contrat</label>
                             <select class="form-control" name="option" id="option">
-                            <option value="1">Aucun</option>
-                            <option value="2">1 option</option>
-                            <option value="3">2 option </option>
-                            <option value="4">Toute option</option>
+                                @foreach ($options as $option)
+                                <option value="{{$option->id}}">{{$option->option}}</option>
+                               @endforeach
                             </select>
                         </div>
                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">

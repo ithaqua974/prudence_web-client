@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Contrat;
+use App\Option;
+use App\Type;
 use Carbon\Carbon;
 
 class ContratController extends Controller
@@ -13,8 +15,8 @@ class ContratController extends Controller
     public function nouveau(Request $request){
         $current_date_time = Carbon::now()->toDateTimeString();
         $devis= new Contrat;
-        $devis->type= $request->type;
-        $devis->option = $request->option;
+        $devis->type_id= $request->type;
+        $devis->option_id = $request->option;
         if($request->type==1){
             if($request->option==1){
                 $devis->montant_id = 1;
@@ -94,16 +96,18 @@ class ContratController extends Controller
         //
         $devi = Contrat::latest('id')->first();
        //return $devi;
-        return view('formulaire_devis',['devi'=> $devi]);
+        $options = Option::all();
+        $types =Type::all();
+        $devis = Contrat::select('id')->latest('id')->first();
+        return view('formulaire_devis',['options'=> $options,'types'=> $types,'devi'=> $devi]);
        
     }
-    public function rep(){
-        $devi = Contrat::select('id')->latest('id')->first();
-        return view('formulaire_devis',['devi'=> $devi]);
-    }
+    
 
     //fonction d'affichage du formulaire de devis
     public function devis(){
-        return view('formulaire_devis');
+        $options = Option::all();
+        $types =Type::all();
+        return view('formulaire_devis',['options'=> $options,'types'=> $types]);
     }
 }

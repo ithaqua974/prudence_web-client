@@ -15,4 +15,12 @@ class Contrat extends Model
     {
         return $this->belongsTo('App\Montant');
     }
+    public function type()
+    {
+        return $this->belongsTo('App\Type');
+    }
+    public function option()
+    {
+        return $this->belongsTo('App\Option');
+    }
 }
