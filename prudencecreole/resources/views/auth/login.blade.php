@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+            <div class="card bg-color-primary">
+                <div class="card-header">Login</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -51,11 +51,11 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-light">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link text-warning" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>
