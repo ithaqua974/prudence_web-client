@@ -6,4 +6,16 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+.bg-color-primary {
+    background: $brand-primary;
+}
+
+.bg-color-secondary {
+    background: $brand-secondary;
+}
+
+.bg-color-alt {
+    background: $brand-alt-primary;
+}
