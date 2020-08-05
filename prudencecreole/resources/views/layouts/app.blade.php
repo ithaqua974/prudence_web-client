@@ -18,10 +18,19 @@
     <div class="d-flex justify-content-center bg-color-primary">
         <img src="img/logo.svg" alt="" class="img-fluid">
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }} 
-        </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color-primary">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    {{ config('app.name', 'Laravel') }} 
+                </a>
+            </li class="nav-item">
+            <li>
+<a class="nav-link" href="{{ url('/devis') }}">
+                    faire un devis
+                </a>
+            </li>
+        </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,11 +40,11 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link"href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link"href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link"href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                             {{ Auth::user()->nom }} {{ Auth::user()->prenom }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">

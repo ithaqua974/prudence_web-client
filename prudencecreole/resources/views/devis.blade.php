@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Mes Devis</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">Mes Devis</div>
+                <div class="card-body">
                     @foreach ($devis as $devi)
                         @if($devi->user_id == Auth::user()->id )
                         <div class="card" >

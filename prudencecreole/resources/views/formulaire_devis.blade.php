@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Devis</div>
-                <div class="panel-body">
+            <div class="card m-md-2 shadow">
+                <div class="card-header">Devis</div>
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('devis') }}">
                         {{ csrf_field() }} 
                         <div class="form-group">
@@ -53,7 +53,7 @@
                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-warning">
                                     Demander un devis
                                 </button>
                             </div>
