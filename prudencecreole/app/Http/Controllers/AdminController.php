@@ -25,15 +25,39 @@ class AdminController extends Controller
      */
     public function index()
     {
+        return view('admin/home');
+    }
 
+    public function listClients() 
+    {
         $users = DB::table('users')->get();
 
         $contrats = DB::table('users')
             ->join('contrats', 'users.id', '=', 'contrats.user_id')
             ->get();
-
             
-        return view('home-admin', ['users' => $users,'contrats'=>$contrats]);
-
+        return view('admin/client', [
+            'users' => $users,
+            'contrats'=>$contrats
+        ]);
     }
+    
+    public function listRoles() 
+    {
+        $roles = DB::table('roles')->get();
+
+        return view('admin/role', [
+            'roles' => $roles
+        ]);
+    }
+    
+    public function listTypes() 
+    {
+        $types = DB::table('types')->get();
+            
+        return view('admin/type', [
+            'types' => $types,
+        ]);
+    }
+    
 }

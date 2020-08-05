@@ -53,16 +53,15 @@
                
                 <div class="navi">
                     <ul>
-                        <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Workflow</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
-                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                        <li><a href="{{ url('admin') }}"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="{{ url('admin/clients') }}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Clients</span></a></li>
+                        <li><a href="{{ url('admin/roles') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Rôles</span></a></li>
+                        <li><a href="{{ url('admin/types') }}"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Types</span></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li> -->
                     </ul>
-
-
                 </div>
+
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
        
@@ -70,7 +69,7 @@
                     <h1>Bienvenue</h1>
                     <div class="row">
                        
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+                        <div class="col-md-12 col-sm-7 col-xs-12 gutter">
 
                         @yield('content')
                         </div>
