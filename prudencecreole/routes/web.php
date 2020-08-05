@@ -19,3 +19,4 @@ Auth::routes();
 Route::get('/devis', 'ContratController@devis')->name('devis');
 Route::post('/devis', 'ContratController@nouveau')->name('devis');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home-admin', 'AdminController@index')->name('home-admin');
