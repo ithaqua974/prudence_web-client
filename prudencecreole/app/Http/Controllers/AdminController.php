@@ -26,12 +26,14 @@ class AdminController extends Controller
     public function index()
     {
 
-        $users = DB::table('users')
+        $users = DB::table('users')->get();
+
+        $contrats = DB::table('users')
             ->join('contrats', 'users.id', '=', 'contrats.user_id')
             ->get();
 
-            //dd($users);
-        return view('home-admin', ['users' => $users]);
+            
+        return view('home-admin', ['users' => $users,'contrats'=>$contrats]);
 
     }
 }
