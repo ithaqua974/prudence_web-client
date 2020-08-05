@@ -21,3 +21,10 @@ Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
 Route::post('/devis', 'ContratController@nouveau')->name('devis');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home-admin', 'AdminController@index')->name('home-admin');
+
+Route::group(['prefix' => '/admin'], function() {
+    Route::get('/', 'AdminController@index')->name('admin');
+    Route::get('/clients', 'AdminController@listClients')->name('admin');
+    Route::get('/roles', 'AdminController@listRoles')->name('admin');
+    Route::get('/types', 'AdminController@listTypes')->name('admin');
+});
