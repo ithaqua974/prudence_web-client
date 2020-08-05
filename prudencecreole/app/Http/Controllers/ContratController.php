@@ -110,4 +110,8 @@ class ContratController extends Controller
         $types =Type::all();
         return view('formulaire_devis',['options'=> $options,'types'=> $types]);
     }
+    public function mesdevis(){
+        $devis = Contrat::all();
+        return view('devis',['devis'=> $devis]);
+    }
 }
