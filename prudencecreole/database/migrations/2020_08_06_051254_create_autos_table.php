@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContratsTable extends Migration
+class CreateAutosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateContratsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrats', function (Blueprint $table) {
+        Schema::create('autos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero')->nullable();
-            $table->integer('type_id');
-            $table->integer('montant_id');
-            $table->integer('user_id');
-            $table->boolean('actif')->nullable();
+            $table->integer('contrat_id');
+            $table->string('modele');
+            $table->string('marque');
+            $table->string('immatriculation');
+            $table->integer('chevaux');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateContratsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrats');
+        Schema::dropIfExists('autos');
     }
 }

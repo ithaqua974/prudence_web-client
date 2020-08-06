@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
     //
-    public function contrat()
+    public function affect_option()
     {
-        return $this->hasOne('App\Contrat');
+        return $this->hasOne('App\Affect_option');
     }
 }

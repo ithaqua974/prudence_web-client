@@ -19,8 +19,8 @@ class Contrat extends Model
     {
         return $this->belongsTo('App\Type');
     }
-    public function option()
+    public function affect_option()
     {
-        return $this->belongsTo('App\Option');
+        return $this->hasMany('App\Affect_option');
     }
 }

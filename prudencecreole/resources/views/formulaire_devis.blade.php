@@ -22,18 +22,19 @@
                         </div>
                         <div class="form-group" name="">
                             <label for="option">Option de contrat</label>
-                            <select class="form-control" name="option" id="option">
-                      
+                            
                                 @foreach ($options as $option)
-                                    <option value="{{$option->id}}"{{ $option->id == $devi->option_id ? 'selected' : '' }}>{{$option->option}}</option>
-                          
+                                    <input type="checkbox" name="options[]" value="{{$option->id}}" {{ $option->id == $devi->option_id ? 'checked' : '' }}/>
+                                    <label for="checkbox">{{$option->option}}</label>
                                 @endforeach
                                 
-                            </select>
+                            
                         </div>
-                        <div class="form-group" name="">
-                            <input class="form-control" type="text" name="montant" value="{{ $devi->montant->montant}}" disabled>
-                        </div>
+                            @if(empty($update))
+                                <div class="form-group" name="">
+                                    <input class="form-control" type="text" name="montant" value="{{ $devi->montant->montant}}" disabled>
+                                </div>
+                            @endif
                         @else
                         <label for="type">Type de contrat</label>
                         <select class="form-control" name="type" id="type">
@@ -43,20 +44,28 @@
                         </select>
                         </div>
                         <div class="form-group" name="">
-                            <label for="option">Option de contrat</label>
-                            <select class="form-control" name="option" id="option">
+                            <label for="option">Option de contrat </label>
+                            <br>
                                 @foreach ($options as $option)
-                                <option value="{{$option->id}}">{{$option->option}}</option>
-                               @endforeach
-                            </select>
+                                    <input type="checkbox" name="options[]" value="{{$option->id}}" />
+                                    <label for="checkbox">{{$option->option}}</label>
+                                @endforeach
                         </div>
                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                         <div class="form-group">
+                            @if(isset($update))
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Mettre à jour mes options
+                                </button>
+                            </div>
+                            @else
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-warning">
                                     Demander un devis
                                 </button>
                             </div>
+                            @endif
                         </div>
                         @endif
                         

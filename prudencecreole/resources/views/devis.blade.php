@@ -14,7 +14,7 @@
                          @if($devi->numero != null)
                          <p class="text-left">{{$devi->numero}}</p>
                         @endif
-                        <p class="text-center"><b>{{$devi->type->type}}</b><br><small> {{$devi->option->option}} </small></p>
+                        <p class="text-center"><b>{{$devi->type->type}}</b><br><small> {{$devi->affect_option->option->option}} </small></p>
                         @if($devi->actif === 0)
                         <p class="text-right"><i>Désactivé</i></p>
                         @elseif($devi->actif == 1)
