@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -28,21 +28,21 @@ class AdminController extends Controller
         return view('admin/home');
     }
 
-    public function listClients() 
+    public function listClients()
     {
         $users = DB::table('users')->get();
 
         $contrats = DB::table('users')
             ->join('contrats', 'users.id', '=', 'contrats.user_id')
             ->get();
-            
+
         return view('admin/client', [
             'users' => $users,
-            'contrats'=>$contrats
+            'contrats' => $contrats
         ]);
     }
-    
-    public function listRoles() 
+
+    public function listRoles()
     {
         $roles = DB::table('roles')->get();
 
@@ -50,14 +50,13 @@ class AdminController extends Controller
             'roles' => $roles
         ]);
     }
-    
-    public function listTypes() 
+
+    public function listTypes()
     {
         $types = DB::table('types')->get();
-            
+
         return view('admin/type', [
             'types' => $types,
         ]);
     }
-    
 }

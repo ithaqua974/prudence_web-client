@@ -11,20 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 Route::get('/devis', 'ContratController@devis')->name('devis');
 Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
 Route::post('/devis', 'ContratController@nouveau')->name('devis');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home-admin', 'AdminController@index')->name('home-admin');
 
-Route::group(['prefix' => '/admin'], function() {
-    Route::get('/', 'AdminController@index')->name('admin');
-    Route::get('/clients', 'AdminController@listClients')->name('admin');
-    Route::get('/roles', 'AdminController@listRoles')->name('admin');
-    Route::get('/types', 'AdminController@listTypes')->name('admin');
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/', 'Admin\AdminController@index')->name('admin');
+    Route::get('/clients', 'Admin\ClientController@index')->name('admin');
+    Route::get('/roles', 'Admin\AdminController@listRoles')->name('admin');
+    Route::get('/types', 'Admin\AdminController@listTypes')->name('admin');
+    Route::get('/clients/detail/{id}', 'Admin\ClientController@edit')->name('admin');
 });

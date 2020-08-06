@@ -17,7 +17,7 @@ class CreateHabitationsTable extends Migration
             $table->increments('id');
             $table->integer('contrat_id');
             $table->integer('nb_piece');
-            $table->int('surface');
+            $table->integer('surface');
             $table->boolean('propriété');
             $table->timestamps();
         });
