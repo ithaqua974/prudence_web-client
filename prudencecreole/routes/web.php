@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/devis', 'ContratController@devis')->name('devis');
+Route::get('/devis/{id}', 'ContratController@devis')->name('devis');
 Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
-Route::post('/devis', 'ContratController@nouveau')->name('devis');
+Route::post('/devis/{id}', 'ContratController@nouveau')->name('devis');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home-admin', 'AdminController@index')->name('home-admin');
 
