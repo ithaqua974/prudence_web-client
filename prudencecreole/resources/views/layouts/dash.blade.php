@@ -35,6 +35,15 @@
 <body class="home">
     
          <header>
+             <div class="row">
+                 <div class="col-md-2"></div>
+                 <div class="col-md-8">
+                    <div class="d-flex justify-content-center">
+                    <img src="../img/logo_admin.svg" alt="logo admin" class="img-fluid">
+                    </div>
+                 </div>
+                 <div class="col-md-2"></div>
+             </div>
                  <nav class="navbar-default pull-left">
                                 <div class="navbar-header">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
