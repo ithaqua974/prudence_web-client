@@ -28,30 +28,38 @@
         <div class="card-deck">
             <form action="/update" method="post">
                 <div class="card">
-                  <div class="card-header">essentiel auto</div>
+                  <div class="card-header">Essentiel auto</div>
                     <div class="card-body">
-                        <label for="actif_auto"></label>
-                        <input type="checkbox" name="actif_auto" id="actif_auto">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="actif-auto">
+                            <label class="form-check-label" for="actif-auto">activer</label>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Sérénité Habitat</div>
                     <div class="card-body">
-                        <label for="actif_habitat"></label>
-                        <input type="checkbox" name="actif_habitat" id="actif_habitat">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="actif-habitat">
+                            <label class="form-check-label" for="actif-habitat">activer</label>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Plénitude santé</div>
                     <div class="card-body">
-                        <label for="actif_sauté"></label>
-                        <input type="checkbox" name="actif_santé" id="actif_santé">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="actif-santé">
+                            <label class="form-check-label" for="actif-santé">activer</label>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-    <div class="card-footer"></div>
+        <div class="card-footer">
+            <input class="btn btn-warning" type="submit" value="valider">
+        </div>
+    </form>
 </div>
     </div>
 </div>
