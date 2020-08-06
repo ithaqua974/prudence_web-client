@@ -14,10 +14,9 @@ class TypeSeeder extends Seeder
         //
         DB::table('types')->insert(array(
             array('type'=>'Assurance habitation'),
-            array('type'=>'Assurance responsabilité civile'),
             array('type'=>'Assurance automobile'),
-            array('type'=>'Assurance moto'),
-            array('type'=>'Assurance vie'),
+            array('type'=>'Assurance maladie'),
+            array('type'=>'Protection juridique'),
         ));
     }
 }

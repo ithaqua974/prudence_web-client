@@ -23,4 +23,17 @@ class Contrat extends Model
     {
         return $this->hasMany('App\Affect_option');
     }
+    public function sante()
+    {
+        return $this->hasOne('App\Sante');
+    }
+    public function auto()
+    {
+        return $this->hasOne('App\Auto');
+    }
+    public function habitation()
+    {
+        return $this->hasOne('App\Habitation');
+    }
+
 }
