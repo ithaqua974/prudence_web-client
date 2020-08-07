@@ -17,8 +17,7 @@ Auth::routes();
 Route::get('/devis/{id}', 'ContratController@devis')->name('devis');
 Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
 Route::post('/devis/{id}', 'ContratController@nouveau')->name('devis');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home-admin', 'AdminController@index')->name('home-admin');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/', 'Admin\AdminController@index')->name('admin');
