@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Contrat extends Model
 {
     //
-    public function user()
+    public function client()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Client');
     }
     public function montant()
     {

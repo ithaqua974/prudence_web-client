@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use app\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClientController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +16,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->get();
+        //
+        $roles = DB::table('roles')->get();
 
-        $contrats = DB::table('users')
-            ->join('contrats', 'users.id', '=', 'contrats.client_id')
-            ->get();
-
-        return view('admin/client', [
-            'users' => $users,
-            'contrats' => $contrats
+        return view('admin/roles/index', [
+            'roles' => $roles,
         ]);
     }
 
@@ -35,6 +32,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        return view('admin/roles/create');
     }
 
     /**
@@ -45,7 +43,11 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newUser = DB::table('roles')->insert([
+            'role' => $request->role
+        ]);
+
+        return $this->index();
     }
 
     /**
@@ -54,25 +56,29 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request)
+    public function show(Request $request)
     {
-        $user = DB::table('users')->where('id', $request->id)->first();
-        return view('admin/detail', [
-            'user' => $user,
-
+        //
+        $role = DB::table('roles')->where('id', $request->id)->first();
+        return view('admin/roles/show', [
+            'role' => $role
         ]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id, Request $request)
-    // {
-    //     $user = DB::table('users')->where('id', $request->id)->first();
-    // }
+    public function edit(Request $request)
+    {
+        //
+        $role = DB::table('roles')->where('id', $request->id)->first();
+        return view('admin/roles/edit', [
+            'role' => $role
+        ]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -83,9 +89,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $user = DB::table('users')
-        //     ->where('id', $request->id)
-        //     ->update(['active' => ]);
+        //
+        $role = DB::table('roles')
+             ->where('id', $request->id)
+             ->update(['role' => $request->role]);
+
+        return $this->index();
     }
 
     /**
@@ -94,8 +103,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $role = DB::table('roles')->where('id', $request->id)->delete();        
+
+        return $this->index();
     }
 }
