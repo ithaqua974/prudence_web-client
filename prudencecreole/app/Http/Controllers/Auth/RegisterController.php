@@ -54,7 +54,19 @@ class RegisterController extends Controller
             'telephone' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+
+        ],[
+        'nom.required'=>'nom manquant',
+        'prenom.required'=>'prenom manquant',
+        'adresse.required'=>'adresse manquant',
+        'telephone.required'=>'téléphone invalide',
+        'email.required'=>'email invalide',
+        'password.required'=>'mot de passe invalide'
+        
+        
         ]);
+      
+    
     }
 
     /**
