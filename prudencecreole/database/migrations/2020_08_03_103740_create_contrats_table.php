@@ -15,10 +15,10 @@ class CreateContratsTable extends Migration
     {
         Schema::create('contrats', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero')->nullable();
+            $table->string('numero')->nullable();
             $table->integer('type_id');
             $table->integer('montant_id');
-            $table->integer('user_id');
+            $table->integer('client_id');
             $table->boolean('actif')->nullable();
             $table->timestamps();
         });
