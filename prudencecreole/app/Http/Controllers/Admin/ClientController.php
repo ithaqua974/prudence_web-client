@@ -18,7 +18,7 @@ class ClientController extends Controller
         $users = DB::table('users')->get();
 
         $contrats = DB::table('users')
-            ->join('contrats', 'users.id', '=', 'contrats.user_id')
+            ->join('contrats', 'users.id', '=', 'contrats.client_id')
             ->get();
 
         return view('admin/client', [
