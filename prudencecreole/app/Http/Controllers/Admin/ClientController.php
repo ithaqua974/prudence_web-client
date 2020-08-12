@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ClientController extends Controller
 {
@@ -56,11 +57,23 @@ class ClientController extends Controller
      */
     public function edit($id, Request $request)
     {
-        $user = DB::table('users')->where('id', $request->id)->first();
+        $user=DB::table('users')
+        ->where('id', $request->id)
+        ->first();
+        $contrats = DB::table('users')
+        ->where('users.id', $request->id)
+            ->join('contrats', 'contrats.users_id', 'users.id')
+            ->get();
+        //    return $contrats;
         return view('admin/detail', [
             'user' => $user,
-
+            'contrats' => $contrats,
         ]);
+        // return  DB::table('users')
+        // ->where('users.id', $request->id)
+        //     ->join('contrats', 'contrats.users_id', 'users.id')
+        //     ->select('contrats.*')
+        //     ->get();
     }
 
     /**

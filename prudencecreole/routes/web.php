@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/devis/{id}', 'ContratController@devis')->name('devis');
 Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
 Route::post('/devis/{id}', 'ContratController@nouveau')->name('devis');
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => '/admin'], function () {
@@ -40,7 +40,7 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/roles/edit/{id}', 'Admin\RoleController@edit')->name('admin_roles@edit');
     Route::post('/roles/update/{id}', 'Admin\RoleController@update')->name('admin_roles@update');
     Route::post('/roles/destroy/{id}', 'Admin\RoleController@destroy')->name('admin_roles@destroy');
-    
+
     /**
      * Types
      */

@@ -3,66 +3,54 @@
 @section('content')
 
 <article class="container">
-<div class="card">
-    <div class="card-header">
-        {{ $user->nom }}
-        {{ $user->prenom}}
-    </div>
-    <div class="card-body">
-        <div>
-            numéro de client: {{$user->client_id}}
+    <div class="card">
+        <div class="card-header">
+            {{ $user->nom }}
+            {{ $user->prenom}}
         </div>
-        <div>
-            Adresse: {{$user->adresse}}
-        </div>
-        <div>
-            Email: {{$user->email}}
-        </div>
-        <div>
-            Téléphone: {{$user->telephone}}
-        </div>
-    
-<div class="card">
-    <div class="card-header">contrats</div>
-    <div class="card-body">
-        <div class="card-deck">
-            <form action="/update" method="post">
-                <div class="card">
-                  <div class="card-header">Essentiel auto</div>
-                    <div class="card-body">
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="actif-auto">
-                            <label class="form-check-label" for="actif-auto">activer</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">Sérénité Habitat</div>
-                    <div class="card-body">
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="actif-habitat">
-                            <label class="form-check-label" for="actif-habitat">activer</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">Plénitude santé</div>
-                    <div class="card-body">
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="actif-santé">
-                            <label class="form-check-label" for="actif-santé">activer</label>
-                        </div>
-                    </div>
-                </div>
+        <div class="card-body p-sm-2">
+            <div>
+                {{-- <div class="font-weight-bold">numéro de client:</div>{{$user->client_id}} --}}
             </div>
-        </div>
-        <div class="card-footer">
-            <input class="btn btn-warning" type="submit" value="valider">
-        </div>
-    </form>
-</div>
+            <div>
+                Adresse: {{$user->adresse}}
+            </div>
+            <div>
+                Email: {{$user->email}}
+            </div>
+            <div>
+                Téléphone: {{$user->telephone}}
+            </div>
+
+            <h3 class=" card-title">contrats</h3>
+            <hr>
+            <form action="/update" method="post" class="form-inline">
+
+                <div class="card-deck">
+                    @foreach ($contrats as $contrat)
+                    <div class="card">
+                        <div class="card-header">
+                            {{$contrat->type}}
+                        </div>
+                        <div class="card-body">
+                            <div class="text-primary"> Numéro de contrat: </div>{{$contrat->num_contrat}}
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="actif-auto">
+                                <label class="form-check-label" for="actif-auto">activer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+                <div class="card-footer">
+                    <input class="btn btn-warning" type="submit" value="valider">
+                </div>
+            </div> 
+            </div>
+        </form>
+    
     </div>
-</div>
 </article>
 
 @endsection
