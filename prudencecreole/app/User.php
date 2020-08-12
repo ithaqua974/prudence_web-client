@@ -29,11 +29,8 @@ class User extends Authenticatable
     public function role(){
         return $this->hasOne('App\Role');
     }
-    public function contrat(){
+    public function contrat()
+    {
         return $this->hasMany('App\Contrat');
     }
-    public function client(){
-        return $this->hasOne('App\Clients');
-    }
-
 }

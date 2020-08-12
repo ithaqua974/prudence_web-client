@@ -12,14 +12,24 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-        'nom'=>'Paul',
-        'prenom'=>'émique',
+        'nom'=>'Emique',
+        'prenom'=>'Paul',
         'adresse'=>'5 rue discorde',
-        'client_id'=>str_random(10),
+        'Num_client'=>str_random(10),
         'email'=>'test@gmail.com',
-        'role_id'=>1,
-        'telephone'=>'+262693123453',
+        'roles_id'=>1,
+        'telephone'=>'+262693135791',
         'password'=>bcrypt('password'),
         ]);
+        DB::table('users')->insert([
+            'nom'=>'Time',
+            'prenom'=>'Vincent',
+            'adresse'=>'24 rue Porte-feuille',
+            'email'=>'test2@gmail.com',
+            'roles_id'=>1,
+            'telephone'=>'+262693246802',
+            'password'=>bcrypt('password'),
+            ]);
+
     }
 }

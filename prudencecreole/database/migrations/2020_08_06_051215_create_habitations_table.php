@@ -15,10 +15,10 @@ class CreateHabitationsTable extends Migration
     {
         Schema::create('habitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contrat_id');
             $table->integer('nb_piece');
             $table->integer('surface');
-            $table->boolean('propriété');
+            $table->boolean('propriete');
+            $table->boolean('valide');
             $table->timestamps();
         });
     }

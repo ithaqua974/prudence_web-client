@@ -15,11 +15,11 @@ class CreateAutosTable extends Migration
     {
         Schema::create('autos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contrat_id');
             $table->string('modele');
             $table->string('marque');
             $table->string('immatriculation');
             $table->integer('chevaux');
+            $table->boolean('valide');
             $table->timestamps();
         });
     }

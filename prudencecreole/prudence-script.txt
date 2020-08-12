@@ -1,0 +1,193 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema prudencecreole
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema prudencecreole
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `prudencecreole` DEFAULT CHARACTER SET utf8 ;
+USE `prudencecreole` ;
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`roles`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`roles` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`roles` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `role` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`users` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`users` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `prenom` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `adresse` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `num_client` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL,
+  `email` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `role_id` INT(11) NOT NULL DEFAULT '1',
+  `telephone` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `password` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `actif` TINYINT(1) NULL DEFAULT NULL,
+  `remember_token` VARCHAR(100) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `roles_id` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `roles_id`),
+  UNIQUE INDEX `users_email_unique` (`email` ASC),
+  INDEX `fk_users_roles1_idx` (`roles_id` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`contrats`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`contrats` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`contrats` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `num_contrat` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL,
+  `type` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `montant` INT(11) NOT NULL,
+  `client_id` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `actif` TINYINT(1) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `users_id` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `users_id`),
+  INDEX `fk_contrats_users1_idx` (`users_id` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`autos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`autos` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`autos` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `modele` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `marque` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `immatriculation` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `chevaux` INT(11) NOT NULL,
+  `valide` TINYINT(1) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `users_id` INT(10) UNSIGNED NOT NULL,
+  `contrats_id` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `users_id`, `contrats_id`),
+  INDEX `fk_autos_users1_idx` (`users_id` ASC),
+  INDEX `fk_autos_contrats1_idx` (`contrats_id` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`habitations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`habitations` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`habitations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nb_piece` INT(11) NOT NULL,
+  `surface` INT(11) NOT NULL,
+  `propriete` TINYINT(1) NOT NULL,
+  `valide` TINYINT(1) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `users_id` INT(10) UNSIGNED NOT NULL,
+  `contrats_id` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `users_id`, `contrats_id`),
+  INDEX `fk_habitations_users1_idx` (`users_id` ASC),
+  INDEX `fk_habitations_contrats1_idx` (`contrats_id` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`migrations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`migrations` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`migrations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `batch` INT(11) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+AUTO_INCREMENT = 318
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`password_resets`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`password_resets` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`password_resets` (
+  `email` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `token` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  INDEX `password_resets_email_index` (`email` ASC))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `prudencecreole`.`santes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prudencecreole`.`santes` ;
+
+CREATE TABLE IF NOT EXISTS `prudencecreole`.`santes` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `prenom_conjoint` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `njf_conjoint` VARCHAR(191) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `nb_enfants` INT(11) NOT NULL,
+  `valide` TINYINT(1) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `users_id` INT(10) UNSIGNED NOT NULL,
+  `contrats_id` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `users_id`, `contrats_id`),
+  INDEX `fk_santes_users_idx` (`users_id` ASC),
+  INDEX `fk_santes_contrats1_idx` (`contrats_id` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

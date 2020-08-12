@@ -15,10 +15,10 @@ class CreateSantesTable extends Migration
     {
         Schema::create('santes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contrat_id');
-            $table->string('nom_conjoint');
             $table->string('prenom_conjoint');
+            $table->string('njf_conjoint');
             $table->integer('nb_enfants');
+            $table->boolean('valide');
             $table->timestamps();
         });
     }
