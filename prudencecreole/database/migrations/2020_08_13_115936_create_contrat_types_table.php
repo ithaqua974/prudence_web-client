@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSantesTable extends Migration
+class CreateContratTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('santes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('prenom_conjoint');
-            $table->string('njf_conjoint');
-            $table->integer('nb_enfants');
-            $table->boolean('valide');
+        Schema::create('contrat_types', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->increments('contrats_id')->unsigned();
+            $table->foreign('contrats_id')->references('id');
             $table->timestamps();
+            $table->string(20);
         });
     }
 
@@ -30,6 +29,6 @@ class CreateSantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('santes');
+        Schema::dropIfExists('contrat_types');
     }
 }

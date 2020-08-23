@@ -12,12 +12,12 @@ class HabitationsSeeder extends Seeder
     public function run()
     {
         DB::table('habitations')->insert([
-            'nb_piece'=>5,
-            'surface'=>75,
-            'propriete'=>0,
-            'valide'=>0,
-            'users_id'=>1,
-            'contrats_id'=>1,
-            ]);
+            'nb_piece' => 5,
+            'surface' => 75,
+            'propriete' => 0,
+            'users_id' => 1,
+            'contrats_id' => 1,
+            'valide' => 0,
+        ]);
     }
 }

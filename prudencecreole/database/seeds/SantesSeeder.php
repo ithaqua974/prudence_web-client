@@ -13,16 +13,13 @@ class SantesSeeder extends Seeder
     {
         //
         DB::table('santes')->insert([
-            'njf_conjoint'=>'Age',
-            'prenom_conjoint'=>'Polys',
-            'nb_enfants'=>2,
-            'valide'=>0,
-            'users_id'=>1,
-            'contrats_id'=>1,
-            
-            ]);
+            'njf_conjoint' => 'Age',
+            'prenom_conjoint' => 'Polys',
+            'nb_enfants' => 2,
+            'users_id' => 1,
+            'contrats_id' => 1,
+            'valide' => 0,
+
+        ]);
     }
 }
-
-            
-            

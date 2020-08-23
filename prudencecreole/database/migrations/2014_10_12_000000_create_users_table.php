@@ -21,16 +21,25 @@ class CreateUsersTable extends Migration
             $table->string('num_client')->nullable();
             $table->string('email')->unique();
             $table->integer('role_id')->default('1');
+            $table->integer('user_role_id')->default('2');
             $table->string('telephone');
             $table->string('password');
             $table->boolean('actif')->nullable();
+            $table->string('prenom_conjoint')->nullable();
+            $table->string('njf_conjoint')->nullable();
+            $table->integer('nb_enfants')->nullable();
+            $table->integer('nb_piece')->nullable();
+            $table->integer('surface')->nullable();
+            $table->boolean('propriete')->nullable();
+            $table->string('modele')->nullable();
+            $table->string('marque')->nullable();
+            $table->string('immatriculation')->nullable();
+            $table->integer('chevaux')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
-
-       
     }
-    
+
     /**
      * Reverse the migrations.
      *

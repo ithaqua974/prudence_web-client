@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Auto extends Model
+class Contrat_type extends Model
 {
-    //
     public function contrat()
     {
-        return $this->belongsTo('App\Contrat');
+        return $this->belongsTo('App\Contrat')
     }
 }
-

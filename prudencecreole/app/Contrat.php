@@ -9,19 +9,11 @@ class Contrat extends Model
     //
     public function user()
     {
-        return $this->belongsTo('App\User');
-    }
-    public function sante()
-    {
-        return $this->hasOne('App\Sante');
-    }
-    public function auto()
-    {
-        return $this->hasOne('App\Auto');
-    }
-    public function habitation()
-    {
-        return $this->hasOne('App\Habitation');
+        return $this->belongsTo('App\User', 'users_has_contrat', 'contrat_id', 'user_id');
     }
 
+    public function contrat_types()
+    {
+        return $this->belongsToMany('App\Contrat_type');
+    }
 }
