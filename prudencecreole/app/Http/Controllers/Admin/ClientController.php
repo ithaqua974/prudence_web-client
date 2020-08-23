@@ -55,13 +55,13 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request)
+    public function edit(Request $request)
     {
-        $user=DB::table('users')
-        ->where('id', $request->id)
-        ->first();
+        $user = DB::table('users')
+            ->where('id', $request->id)
+            ->first();
         $contrats = DB::table('users')
-        ->where('users.id', $request->id)
+            ->where('users.id', $request->id)
             ->join('contrats', 'contrats.users_id', 'users.id')
             ->get();
         //    return $contrats;

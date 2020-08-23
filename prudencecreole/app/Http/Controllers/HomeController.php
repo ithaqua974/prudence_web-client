@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Contrat;
+use App\User;
+
 
 class HomeController extends Controller
 {
@@ -27,14 +30,12 @@ class HomeController extends Controller
     public function index()
     {
         $session_id = Auth::user()->id;
-        $user = DB::table('users')
-            ->where('id', $session_id)
-            ->first();
-        $contrats = DB::table('contrats')
-            ->where('contrats.users_id', $session_id)
-            // ->join('contrats', 'contrats.users_id', 'users.id')
-            ->Join('santes', 'contrats.users_id', '=', 'santes.users_id')
-            ->get();
+        $user = User::where('id', $session_id)->first();
+        $contrats = Contrat::get();
+        // $contrats = Contrat::where('users_id', $session_id)
+        //     // ->join('users', 'contrats.id', '=', 'contrats.users_id')
+
+        //     ->get();
         // return $contrats;
         // $devis = DB::table('')
 
@@ -43,5 +44,29 @@ class HomeController extends Controller
             'contrats' => $contrats,
         ]);
         // return view('home');
+    }
+    public function show(Request $request)
+    {
+        $session_id = Auth::user()->id;
+        if ($request->type == 'auto') {
+            $tupe = 'autos';
+            # code...
+        };
+        if ($request->type == 'santé') {
+            $tupe = 'santes';
+            # code...
+        };
+        if ($request->type == 'habitation') {
+            $tupe = 'habitations';
+            # code...
+        };
+        $contrats = DB::table('contrats')->where('type', $request->type)
+            ->join($tupe, $tupe . '.contrats_id', 'contrats.id')
+            ->first();
+        // return $tupe . '.contrats_id';
+        return view('detail_contrat', [
+            'contrats' => $contrats,
+
+        ]);
     }
 }

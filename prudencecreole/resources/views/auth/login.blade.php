@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="card bg-color-primary">
+            <div class="card bg-color-primary my-sm-4 shadow">
                 <div class="card-header">Connexion</div>
 
                 <div class="card-body">

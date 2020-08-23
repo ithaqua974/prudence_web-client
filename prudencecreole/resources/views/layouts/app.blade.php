@@ -45,7 +45,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link"href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                            {{ Auth::user()->nom }} {{ Auth::user()->prenom }}<span class="caret"></span>
+                            {{ Auth::user()->prenom }} {{ Auth::user()->nom }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>

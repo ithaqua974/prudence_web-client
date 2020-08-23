@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +19,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/detail/{type}', 'HomeController@show')->name('détail');
 Route::get('/devis/{id}', 'ContratController@devis')->name('devis');
 Route::get('/mesdevis', 'ContratController@mesdevis')->name('mesdevis');
 Route::post('/devis/{id}', 'ContratController@nouveau')->name('devis');
