@@ -60,6 +60,7 @@
                                 </a>
                             </div>
                         </div>
+                        @csrf
                     </form>
                 </div>
             </div>
