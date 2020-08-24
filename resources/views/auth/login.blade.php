@@ -6,10 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card bg-color-primary my-sm-4 shadow">
                 <div class="card-header">Connexion</div>
-
+                
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
+                        @csrf
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Adresse mail</label>
@@ -60,7 +61,6 @@
                                 </a>
                             </div>
                         </div>
-                        @csrf
                     </form>
                 </div>
             </div>
