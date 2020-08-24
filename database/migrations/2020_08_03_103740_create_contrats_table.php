@@ -20,7 +20,7 @@ class CreateContratsTable extends Migration
             $table->integer('montant');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
-            $table->boolean('actif')->nullable();
+            $table->boolean('actif')->default('1');
             $table->timestamps();
         });
     }

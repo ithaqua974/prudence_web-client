@@ -14,11 +14,11 @@ class CreateContratTypesTable extends Migration
     public function up()
     {
         Schema::create('contrat_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->increments('contrats_id')->unsigned();
-            $table->foreign('contrats_id')->references('id');
+            $table->increments('id');
+            $table->integer('contrats_id')->unsigned();
+            $table->foreign('contrats_id')->references('id')->on('contrats');
             $table->timestamps();
-            $table->string(20);
+            $table->string('nom');
         });
     }
 
